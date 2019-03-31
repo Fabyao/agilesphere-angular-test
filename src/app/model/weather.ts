@@ -1,3 +1,5 @@
+import { Capability } from "protractor";
+
 export interface City {
   id: number;
   name: string;
@@ -60,6 +62,18 @@ export interface Weather {
   list?: WeatherList[];
 }
 
+
+export interface TemperatureInfo {
+  temparature: number;
+  dateTime: Date;
+}
 export interface Summary {
   city: string;
+  temperatureInfo: TemperatureInfo[];
+
+}
+
+export interface WeatherViewInfo {
+  headerInfo: string[];
+  summary: Summary[];
 }

@@ -1,20 +1,16 @@
-<table class="table">
+<table class="table" *ngIf="weatherList$ | async as weatherList;">
   <thead class="thead-dark">
   <tr>
-    <th scope="col">City</th>
-    <th scope="col">6 AM</th>
-    <th scope="col">12 PM</th>
-    <th scope="col">6 PM</th>
-    <th scope="col">12 AM</th>
+    <th *ngFor='let header of weatherList.headerInfo' scope="col">{{header}}</th>    
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td scope="row">London</td>
-    <td scope="row">3 &deg;</td>
-    <td scope="row">12.5 &deg;</td>
-    <td scope="row">9 &deg;</td>
-    <td scope="row">2 &deg;</td>
-  </tr>
+
+      <tr *ngFor='let weather of weatherList.summary'>
+
+          <td scope="row">{{weather.city}}</td>
+
+          <td *ngFor='let tempInfo of weather.temperatureInfo' scope="row">{{tempInfo.temparature}} &deg;</td>
+      </tr>  
   </tbody>
 </table>

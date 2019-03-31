@@ -1,11 +1,12 @@
-<form class="form-inline mb-5">
+<form [formGroup]="searchForm" (ngSubmit)="search()" class="form-inline mb-5" novalidate>
   <div class="form-group col-8 pl-0">
     <input class="form-control mt-3 col"
            id="city"
            name="city"
            placeholder="City"
            type="text"
+           formControlName="city"
            required>
   </div>
-  <button class="btn-search btn btn-primary mt-3 col-4" type="submit" (click)="search()">Search</button>
+  <button id="btn-search-city" class="btn-search btn btn-primary mt-3 col-4" type="submit">Search</button>
 </form>

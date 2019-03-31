@@ -4,18 +4,22 @@ import { WeatherContainer } from './weather.container';
 import { WeatherService } from './weather.service';
 import { SearchComponent } from './components/search/search.component';
 import { ResultsComponent } from './components/results/results.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
-// IF YOU DECIDE TO USE NG-RX YOU'LL NEED TO UNCOMMENT SOME LINES
-// import { StoreModule } from '@ngrx/store';
-// import { EffectsModule } from '@ngrx/effects';
-// import { reducers, effects } from './store';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { effects, reducers } from './store';
 
 @NgModule({
   imports: [
     CommonModule,
-    // StoreModule.forFeature('weather', reducers),
-    // EffectsModule.forFeature(effects)
+    HttpClientModule,
+    StoreModule.forFeature('weather', reducers),
+    EffectsModule.forFeature(effects),
+    ReactiveFormsModule
   ],
   declarations: [
     SearchComponent,
@@ -24,6 +28,7 @@ import { ResultsComponent } from './components/results/results.component';
   ],
   providers: [
     WeatherService
+
   ]
 })
 export class WeatherModule { }
